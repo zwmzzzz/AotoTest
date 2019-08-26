@@ -37,6 +37,7 @@ class RequestMethod:
         json=kwargs.get('json')
         try:
             print('url:',url)
+            print("params",params)
             result2=requests.post(url,params=params,data=data,json=json)
             return result2
         except Exception as e:
