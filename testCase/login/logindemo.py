@@ -9,28 +9,11 @@ import unittest
 import ddt
 
 from common.getParams import get_req_params
+from common.readExcel import read_all_req
 from common.reqMethod import RequestMethod
-test_data = [{
-    "clientCode": "韩",
-    "topic": "测试接口",
-    "content": "测试接口",
-    "resrcType": "0",
-    "assert": "200"
-},
-    {
-        "clientCode": "",
-        "topic": "测试接口2",
-        "content": "测试接口2",
-        "resrcType": "0",
-        "assert": "400"
-    },
-    {
-        "clientCode": "韩",
-        "topic": "",
-        "content": "测试接口2",
-        "resrcType": "0",
-        "assert": "400"
-    }]
+test_data = [{'account': '13000000000', 'password': '123456', 'system_type': '2', 'system_version': '1.0', 'device_uid': '87C4F987E5230C58A26E8A8A3E97A8CB', 'phone_model': 'iPad', 'role': '2', 'clientversion': '1.0.0', 'Response': '', 'code': '0', 'msg': '成功', 'user_name': '9705测试'}, {'account': '', 'password': '123456', 'system_type': '2', 'system_version': '1.0', 'device_uid': '87C4F987E5230C58A26E8A8A3E97A9CB', 'phone_model': 'iPad', 'role': '2', 'clientversion': '1.0.0', 'Response': '', 'code': '1', 'msg': '用户不存在', 'user_name': ''}, {'account': '13000000000', 'password': '111111', 'system_type': '2', 'system_version': '1.0', 'device_uid': '87C4F987E5230C58A26E8A8A3E97A8CB', 'phone_model': 'iPad', 'role': '2', 'clientversion': '1.0.0', 'Response': '', 'code': '1', 'msg': '密码错误', 'user_name': ''}, {'account': '13000000000', 'password': '123456', 'system_type': '2', 'system_version': '1.0', 'device_uid': '87C4F987E5230C58A26E8A8A3E97A9CB', 'phone_model': 'iPad', 'role': '3', 'clientversion': '1.0.0', 'Response': '', 'code': '1', 'msg': '用户不存在', 'user_name': ''}]
+
+data1=read_all_req('D:/python/AotoTest/testFile/login/teacherCase.xlsx','login')
 
 @ddt.ddt
 class Login(unittest.TestCase):
@@ -41,7 +24,7 @@ class Login(unittest.TestCase):
     def tearDown(self):
         pass
 
-    @ddt.data(*test_data)
+    @ddt.data(*data1)
     def test_log_success(self,par):
         case='test_login_success'
         #param=get_req_params(self.sheet,case)

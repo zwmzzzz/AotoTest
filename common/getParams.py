@@ -7,7 +7,7 @@
 import configparser
 import os
 
-from common.readExcel import row_value
+from common.readExcel import row_value, read_all_req
 
 proj_path=str(os.path.dirname(__file__).split('common')[0])
 proj_path=proj_path.replace('\\','/')
@@ -43,11 +43,15 @@ def get_resp_params(sheet, case, resp_key):
             if param_key[key_i]==resp_key:
                 return param_value[key_i]
 
+
+
 if __name__=='__main__':
-    req=get_req_params('login','test_login_success')
-    print(req)
-    req1=get_resp_params('login','test_login_success','msg')
-    print(req1)
+    #req=get_req_params('login','test_login_success')
+   # print(req)
+    #req1=get_resp_params('login','test_login_success','msg')
+    #print(req1)
+    print(excel_path)
+    req2=read_all_req(excel_path,'login')
 
 
 
