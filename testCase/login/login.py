@@ -30,5 +30,3 @@ class Login(unittest.TestCase):
 
 if __name__=='__main__':
     Login.test_log_success()
-    print(111)
-    print(3222)
